@@ -23,7 +23,13 @@
                             <outlet property="delegate" destination="T4b-Sc-Gne" id="koO-K7-cGb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Comics" id="NWc-jm-xQi"/>
+                    <navigationItem key="navigationItem" title="Comics" id="NWc-jm-xQi">
+                        <barButtonItem key="leftBarButtonItem" title="©" style="plain" id="OwD-dx-GU6">
+                            <connections>
+                                <segue destination="VEh-Ys-7SM" kind="presentation" id="gPl-jc-3Ay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <segue destination="nqE-yZ-e2r" kind="showDetail" identifier="ComicDetails" action="showViewController:sender:" id="YXY-7Z-KIy"/>
@@ -31,7 +37,62 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppa-2Z-7Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.8" y="404.34782608695656"/>
+            <point key="canvasLocation" x="1145" y="404"/>
+        </scene>
+        <!--Card View-->
+        <scene sceneID="aeV-Y6-EZe">
+            <objects>
+                <viewController id="VEh-Ys-7SM" customClass="CardView" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D9U-ty-JQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="dRk-55-2yM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Uw-Wx-TnW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LWR-eV-G7r">
+                                <rect key="frame" x="21" y="267" width="332" height="133"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data provided by Marvel. © 2017 Marvel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPJ-Py-ov5">
+                                <rect key="frame" x="34" y="638" width="307" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by Eugène Peschard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W6-uM-A20">
+                                <rect key="frame" x="66" y="609" width="243" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2A-en-ueF">
+                                <rect key="frame" x="164" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.9400024414" green="0.076443262400000003" blue="0.1166153923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="nFj-Sk-JZV" kind="unwind" unwindAction="closeCardWithSegue:" id="hrZ-7f-spP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0W6-uM-A20" firstAttribute="centerX" secondItem="1Uw-Wx-TnW" secondAttribute="centerX" id="2K2-Ds-dce"/>
+                            <constraint firstItem="LPJ-Py-ov5" firstAttribute="top" secondItem="0W6-uM-A20" secondAttribute="bottom" constant="8" symbolic="YES" id="6ed-cg-9PA"/>
+                            <constraint firstItem="LPJ-Py-ov5" firstAttribute="centerX" secondItem="1Uw-Wx-TnW" secondAttribute="centerX" id="8GJ-20-4CM"/>
+                            <constraint firstItem="LWR-eV-G7r" firstAttribute="centerX" secondItem="1Uw-Wx-TnW" secondAttribute="centerX" id="F36-DO-OFJ"/>
+                            <constraint firstItem="dRk-55-2yM" firstAttribute="top" secondItem="LPJ-Py-ov5" secondAttribute="bottom" constant="8" symbolic="YES" id="J0D-jB-Bdh"/>
+                            <constraint firstItem="LWR-eV-G7r" firstAttribute="centerY" secondItem="1Uw-Wx-TnW" secondAttribute="centerY" id="ZTl-xV-UQA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbK-O7-6sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nFj-Sk-JZV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2094" y="404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PEf-wx-Kdw">
@@ -394,6 +455,24 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" editingAccessoryType="disclosureIndicator" textLabel="n2w-hP-3gy" style="IBUITableViewCellStyleDefault" id="NyL-Le-FDd">
+                                        <rect key="frame" x="0.0" y="1016" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NyL-Le-FDd" id="0rq-VA-afk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Data provided by Marvel. © 2017 Marvel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="n2w-hP-3gy">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -458,7 +537,7 @@
         <!--Popover Table-->
         <scene sceneID="JFw-Zk-5jM">
             <objects>
-                <tableViewController storyboardIdentifier="PopoverTable" id="DiL-Rb-jJk" customClass="PopoverTable" customModule="PruebaWallapop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PopoverTable" id="DiL-Rb-jJk" customClass="PopoverTable" customModule="MarvelOus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wpn-6N-YEj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,9 +570,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m54-4D-g3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="1115"/>
+            <point key="canvasLocation" x="2095" y="1115"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MarvelLogo" width="332" height="133"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YXY-7Z-KIy"/>
     </inferredMetricsTieBreakers>

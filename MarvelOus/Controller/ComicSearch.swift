@@ -156,6 +156,34 @@ class ComicSearch: UITableViewController, SearchTable {
     }
   }
   
+  // MARK: - Table View Delegate
+  
+  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    // Return false if you do not want the specified item to be editable.
+    return true
+  }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      deleteRow(at: indexPath)
+    } else if editingStyle == .insert {
+      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+  }
+  
+  func deleteRow(at indexPath: IndexPath)
+  {
+    do {
+      let realm = try! Realm()
+      realm.beginWrite()
+      realm.delete(objects[indexPath.row])
+      try realm.commitWrite()
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    } catch {
+      print(error.localizedDescription)
+    }
+  }
+  
   // MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -166,6 +194,9 @@ class ComicSearch: UITableViewController, SearchTable {
       controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
       controller.navigationItem.leftItemsSupplementBackButton = true
     }
+  }
+    
+  @IBAction func closeCard(segue:UIStoryboardSegue) {
   }
   
 }

@@ -34,6 +34,9 @@
 		9C4F6CD71EBF9FBC004D5F23 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CD61EBF9FBC004D5F23 /* Identifiable.swift */; };
 		9C4F6CD91EBFA888004D5F23 /* TableView+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CD81EBFA888004D5F23 /* TableView+Empty.swift */; };
 		9C4F6CDB1EBFAEAF004D5F23 /* PopoverTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CDA1EBFAEAF004D5F23 /* PopoverTable.swift */; };
+		9C4F6CDD1EBFC15F004D5F23 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CDC1EBFC15F004D5F23 /* CardView.swift */; };
+		9C4F6CDF1EBFC174004D5F23 /* CardPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CDE1EBFC174004D5F23 /* CardPresentation.swift */; };
+		9C4F6CE11EBFC183004D5F23 /* CardAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */; };
 		9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */; };
 		9CE39B4E1EBCDE1900A08E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4C1EBCDE1900A08E94 /* Main.storyboard */; };
 		9CE39B501EBCDE1900A08E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */; };
@@ -92,6 +95,9 @@
 		9C4F6CD61EBF9FBC004D5F23 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Identifiable.swift; path = Protocol/Identifiable.swift; sourceTree = "<group>"; };
 		9C4F6CD81EBFA888004D5F23 /* TableView+Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableView+Empty.swift"; path = "Extensions/TableView+Empty.swift"; sourceTree = "<group>"; };
 		9C4F6CDA1EBFAEAF004D5F23 /* PopoverTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopoverTable.swift; path = Controller/PopoverTable.swift; sourceTree = "<group>"; };
+		9C4F6CDC1EBFC15F004D5F23 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Controller/CardView.swift; sourceTree = "<group>"; };
+		9C4F6CDE1EBFC174004D5F23 /* CardPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPresentation.swift; path = Controller/CardPresentation.swift; sourceTree = "<group>"; };
+		9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardAnimation.swift; path = Controller/CardAnimation.swift; sourceTree = "<group>"; };
 		9CE39B451EBCDE1900A08E94 /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CE39B4D1EBCDE1900A08E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,6 +268,9 @@
 				9C4F6CB71EBF474F004D5F23 /* ComicResult.swift */,
 				9C4F6CD41EBF9E7E004D5F23 /* ComicDetails.swift */,
 				9C4F6CDA1EBFAEAF004D5F23 /* PopoverTable.swift */,
+				9C4F6CDC1EBFC15F004D5F23 /* CardView.swift */,
+				9C4F6CDE1EBFC174004D5F23 /* CardPresentation.swift */,
+				9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -526,9 +535,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C4F6CAB1EBF396E004D5F23 /* Images.swift in Sources */,
+				9C4F6CDD1EBFC15F004D5F23 /* CardView.swift in Sources */,
 				9C4F6CCC1EBF7E05004D5F23 /* ComicSearch.swift in Sources */,
 				9C4F6CAC1EBF396E004D5F23 /* Price.swift in Sources */,
 				9C4F6CC31EBF56D8004D5F23 /* ComicCell.swift in Sources */,
+				9C4F6CE11EBFC183004D5F23 /* CardAnimation.swift in Sources */,
 				9CE39B7D1EBCDF6C00A08E94 /* MarvelAPI.swift in Sources */,
 				9C4F6CC11EBF5643004D5F23 /* ResultTable.swift in Sources */,
 				9C4F6CBB1EBF556D004D5F23 /* RealmTable.swift in Sources */,
@@ -543,6 +554,7 @@
 				9C4F6CCF1EBF822E004D5F23 /* SearchableCell.swift in Sources */,
 				9C4F6CC51EBF5800004D5F23 /* NibLoadableView.swift in Sources */,
 				9C4F6CD51EBF9E7E004D5F23 /* ComicDetails.swift in Sources */,
+				9C4F6CDF1EBFC174004D5F23 /* CardPresentation.swift in Sources */,
 				9C4F6CD91EBFA888004D5F23 /* TableView+Empty.swift in Sources */,
 				9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */,
 				9C4F6CB11EBF3AA1004D5F23 /* Creator.swift in Sources */,

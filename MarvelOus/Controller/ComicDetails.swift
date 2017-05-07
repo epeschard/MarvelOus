@@ -261,6 +261,12 @@ class ComicDetails: UITableViewController {
     
   }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath == IndexPath(row: 13, section: 0) {
+      print("selected info")
+    }
+  }
+  
   func preparePopover(with objects: [String], and title: String) -> UIViewController {
     let table = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PopoverTable.identifier) as! PopoverTable
     table.objects = objects
