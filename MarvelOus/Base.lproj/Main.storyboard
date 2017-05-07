@@ -22,10 +22,12 @@
                             <outlet property="delegate" destination="T4b-Sc-Gne" id="koO-K7-cGb"/>
                         </connections>
                     </tableView>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppa-2Z-7Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="207" y="405"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.9400024414" green="0.076443262400000003" blue="0.1166153923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

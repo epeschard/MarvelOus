@@ -25,23 +25,36 @@ class ComicResult: UITableViewController, RealmTable {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    loadLocalComics()
+//    loadLocalComics()
+    // Download comics from MARVEL
+    MarvelAPI().download(.comics, first: 100, startingFrom: 0) {
+      [weak weakSelf = self]
+      response in
+      
+      switch response.result {
+      case .success:
+        weakSelf?.tableView.reloadData()
+      case .failure(let error):
+        //TODO: Present as AlertView
+        print(error.localizedDescription)
+      }
+    }
 
     showRealmFileLocation()
     
     setupStyle()
   }
   
-  func loadLocalComics() {
-    if let path = Bundle.main.path(forResource: "Comics", ofType: "json") {
-      do {
-        let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-        if let jsonResult = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
-          try Comic.create(from: jsonResult)
-        }
-      } catch { print(error.localizedDescription) }
-    }
-  }
+//  func loadLocalComics() {
+//    if let path = Bundle.main.path(forResource: "Comics", ofType: "json") {
+//      do {
+//        let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//        if let jsonResult = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
+//          try Comic.create(from: jsonResult)
+//        }
+//      } catch { print(error.localizedDescription) }
+//    }
+//  }
   
   func showRealmFileLocation() {
     let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!

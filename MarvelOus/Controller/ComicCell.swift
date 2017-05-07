@@ -40,8 +40,30 @@ extension ComicCell: RealmCell {
     
     // load new information (if any)
     if let comic = object{
-        titleLabel.text = comic.title
+      titleLabel.text = comic.title
       descriptionLabel.text = comic.format
+      
+      if let nsData = comic.thumbnail?.data {
+        iconImageView.image = UIImage(data: nsData as Data)
+      } else if let thumbnail = comic.thumbnail {
+        iconImageView.image = UIImage(named: "placeholder")
+        // Fetch Images
+        MarvelAPI().getData(for: thumbnail, from: thumbnail.path, completionHandler: {
+          [weak weakSelf = self]
+          response in
+          switch response.result {
+          case .success:
+            do {
+              let data = try response.result.unwrap()
+              weakSelf?.iconImageView.image = UIImage(data: data)
+            } catch {
+              print(error.localizedDescription)
+            }
+          case .failure(let error):
+            print(error.localizedDescription)
+          }
+        })
+      }
     }
   }
   
