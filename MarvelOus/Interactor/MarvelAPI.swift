@@ -170,4 +170,9 @@ class MarvelAPI {
     }
   }
   
+  class func showRealmFileLocation() {
+    let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
+    print(defaultURL)
+  }
+  
 }
