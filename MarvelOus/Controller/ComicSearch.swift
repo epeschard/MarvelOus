@@ -49,9 +49,18 @@ class ComicSearch: UITableViewController, SearchTable {
       case .success:
         weakSelf?.tableView.reloadData()
       case .failure(let error):
-        //TODO: Present as AlertView
-        print(error.localizedDescription)
+        let alert = UIAlertController(title: "Download Failed",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        let defaultButton = UIAlertAction(title: "OK",
+                                          style: .default) {(_) in
+                                            // your defaultButton action goes here
+        }
+        
+        alert.addAction(defaultButton)
+        weakSelf?.present(alert, animated: true)
       }
+      
     }
     
     setupStyle()
@@ -73,6 +82,14 @@ class ComicSearch: UITableViewController, SearchTable {
       split.navigationItem.leftBarButtonItem = split.displayModeButtonItem
       split.delegate = self
       split.preferredDisplayMode = .allVisible
+    }
+    
+    // Avoid haing ComicDetail with no selection
+    if splitViewController?.displayMode == .allVisible {
+//    if UIDevice.current.userInterfaceIdiom == .pad {
+      let firstIndexPath = IndexPath(row: 0, section: 0)
+      self.tableView.selectRow(at: firstIndexPath, animated: true, scrollPosition: .none)
+      select(rowAt: firstIndexPath)
     }
   }
   
@@ -124,14 +141,18 @@ class ComicSearch: UITableViewController, SearchTable {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    select(rowAt: indexPath)
+  }
+  
+  func select(rowAt indexPath: IndexPath) {
     if splitViewController?.viewControllers.count == 1 {
       tableView.deselectRow(at: indexPath, animated: true)
     }
     
     if tableView == resultController?.tableView {
-      performSegue(withIdentifier: "\(DetailVC.self)", sender: resultController?.objects[indexPath.row])
+      performSegue(withIdentifier: DetailVC.identifier, sender: resultController?.objects[indexPath.row])
     } else {
-      performSegue(withIdentifier: "\(DetailVC.self)", sender: objects[indexPath.row])
+      performSegue(withIdentifier: DetailVC.identifier, sender: objects[indexPath.row])
     }
   }
   

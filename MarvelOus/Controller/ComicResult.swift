@@ -25,6 +25,7 @@ class ComicResult: UITableViewController, ResultTable {
   // MARK: - ResultTable Protocol
   
   var query = ""
+  let textForEmptyLabel = "No Comic matching search"
   
   //MARK: RunLoop
   
@@ -58,7 +59,18 @@ class ComicResult: UITableViewController, ResultTable {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return objects.count
+    let rowCount = objects.count
+    
+    // When no data insert centered label
+    if rowCount == 0 {
+      blankView(with: textForEmptyLabel)
+    } else {
+      // Remove empty table label
+      tableView.backgroundView = nil
+      tableView.separatorStyle = .singleLine
+    }
+    
+    return rowCount
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TableCell {
