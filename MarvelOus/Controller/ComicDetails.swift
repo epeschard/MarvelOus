@@ -196,3 +196,6 @@ class ComicDetails: UITableViewController {
     }
   }
 }
+
+// Make ComicDetails comply to Identifiable protocol to get class name as segueId
+extension ComicDetails: Identifiable { }

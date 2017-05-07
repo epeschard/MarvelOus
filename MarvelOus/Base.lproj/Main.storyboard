@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qig-0v-8v9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iq2-RP-0X3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                     <navigationItem key="navigationItem" title="Comics" id="NWc-jm-xQi"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <segue destination="nqE-yZ-e2r" kind="show" identifier="ComicDetails" id="YXY-7Z-KIy"/>
+                        <segue destination="nqE-yZ-e2r" kind="showDetail" identifier="ComicDetails" action="showViewController:sender:" id="YXY-7Z-KIy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppa-2Z-7Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,8 +73,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="449.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSB-46-i4m">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TSB-46-i4m">
                                                     <rect key="frame" x="37" y="0.0" width="300" height="450"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="Fd8-GG-9SC"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -439,6 +442,22 @@
             </objects>
             <point key="canvasLocation" x="206" y="1115"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="itV-Qx-Amb">
+            <objects>
+                <splitViewController id="iq2-RP-0X3" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Qig-0v-8v9" kind="relationship" relationship="masterViewController" id="8qx-1T-f9o"/>
+                        <segue destination="nqE-yZ-e2r" kind="relationship" relationship="detailViewController" id="s6T-7W-wR6"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXs-FG-cmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-583" y="748"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YXY-7Z-KIy"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.9400024414" green="0.076443262400000003" blue="0.1166153923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

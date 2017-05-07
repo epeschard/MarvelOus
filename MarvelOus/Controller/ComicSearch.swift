@@ -65,6 +65,15 @@ class ComicSearch: UITableViewController, SearchTable {
       // Fallback on earlier versions
     }
     
+    // Split View Controller
+    if let split = self.splitViewController {
+      let controllers = split.viewControllers
+      detailView = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailVC
+      
+      split.navigationItem.leftBarButtonItem = split.displayModeButtonItem
+      split.delegate = self
+      split.preferredDisplayMode = .allVisible
+    }
   }
   
   // MARK: - Style
@@ -115,6 +124,10 @@ class ComicSearch: UITableViewController, SearchTable {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if splitViewController?.viewControllers.count == 1 {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     if tableView == resultController?.tableView {
       performSegue(withIdentifier: "\(DetailVC.self)", sender: resultController?.objects[indexPath.row])
     } else {
@@ -227,5 +240,18 @@ extension ComicSearch: UISearchResultsUpdating,
 
 }
 
-// Make ComicDetails comply to Identifiable protocol to get class name as segueId
-extension ComicDetails: Identifiable { }
+// MARK: - Split View Controller Delegate
+
+extension ComicSearch: UISplitViewControllerDelegate {
+  
+  func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+    guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+    guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailVC else { return false }
+    if topAsDetailController.object == nil {
+      // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+      return true
+    }
+    return false
+  }
+  
+}
