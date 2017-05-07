@@ -12,6 +12,9 @@ import RealmSwift
 class ComicSearch: UITableViewController, SearchTable {
   
   typealias TableCell = ComicCell
+  typealias DetailVC = ComicDetails
+  var detailView: DetailVC?
+  
   let cellHeight = CGFloat(100.0)
   
   // MARK: - RealmTable protocol
@@ -111,6 +114,26 @@ class ComicSearch: UITableViewController, SearchTable {
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if tableView == resultController?.tableView {
+      performSegue(withIdentifier: "\(DetailVC.self)", sender: resultController?.objects[indexPath.row])
+    } else {
+      performSegue(withIdentifier: "\(DetailVC.self)", sender: objects[indexPath.row])
+    }
+  }
+  
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == DetailVC.identifier,
+      let object = sender as? TableCell.Entity {
+      let controller = (segue.destination as! UINavigationController).topViewController as! DetailVC
+      controller.object = object
+      controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+      controller.navigationItem.leftItemsSupplementBackButton = true
+    }
+  }
+  
 }
 
 // MARK: - UISearchResultsUpdating
@@ -203,3 +226,6 @@ extension ComicSearch: UISearchResultsUpdating,
   }
 
 }
+
+// Make ComicDetails comply to Identifiable protocol to get class name as segueId
+extension ComicDetails: Identifiable { }
