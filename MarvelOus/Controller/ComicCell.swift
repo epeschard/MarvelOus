@@ -26,6 +26,9 @@ class ComicCell: UITableViewCell {
     }
   }
   
+  // MARK: Searchable Cell protocol
+  
+  var query = ""
 }
 
 // MARK: - Realm Cell Extension
@@ -35,12 +38,21 @@ extension ComicCell: RealmCell {
   func updateUI() {
     // reset any existing information
     clearOutlets()
+    setFonts()
     tintColor = UIColor.white
     backgroundColor = UIColor.black
     
     // load new information (if any)
-    if let comic = object{
-      titleLabel.text = comic.title
+    if let comic = object,
+      let title = comic.title {
+      
+      if query != "" {
+        grayoutLabels()
+        let tint: [String: AnyObject] = [NSForegroundColorAttributeName : marvelRed]
+        titleLabel.attributedText = highlighted(query, in: title, with: tint)
+      } else {
+        titleLabel.text = comic.title
+      }
       descriptionLabel.text = comic.format
       
       if let nsData = comic.thumbnail?.data {
@@ -67,14 +79,48 @@ extension ComicCell: RealmCell {
     }
   }
   
+  func setFonts() {
+    titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+    descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
+  }
+  
   func clearOutlets() {
     titleLabel.text = nil
     descriptionLabel.text = nil
   }
 
+  func grayoutLabels() {
+    titleLabel.textColor = UIColor.lightGray
+    descriptionLabel.textColor = UIColor.gray
+  }
+  
 }
 
 // MARK: - NibLoadableView Cell Extension
 
 extension ComicCell: NibLoadableView { }
+
+// MARK: - Reusable View Extension
+
+extension ComicCell: ReusableView { }
+
+// MARK: - Searchable Cell protocol
+
+extension ComicCell: SearchableCell {
+  
+  func highlighted(_ query:String, in string:String, with attributes: [String: AnyObject]) -> NSAttributedString {
+    let attributedString = NSMutableAttributedString(string: string)
+    if query != "" {
+      let queryWords = query.components(separatedBy: " ") as [String]
+      for queryWord in queryWords {
+        if let range = string.range(of: queryWord, options: .caseInsensitive, range: nil, locale: .current) {
+          let nsRange = string.nsRange(from: range)
+          attributedString.setAttributes(attributes, range: nsRange)
+        }
+      }
+    }
+    return attributedString
+  }
+  
+}
 

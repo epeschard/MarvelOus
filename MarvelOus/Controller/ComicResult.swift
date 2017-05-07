@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ComicResult: UITableViewController, RealmTable {
+class ComicResult: UITableViewController, ResultTable {
   
   typealias TableCell = ComicCell
   
@@ -20,45 +20,18 @@ class ComicResult: UITableViewController, RealmTable {
     }
   }
   
+  let cellHeight = CGFloat(63.0)
+  
+  // MARK: - ResultTable Protocol
+  
+  var query = ""
+  
   //MARK: RunLoop
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    loadLocalComics()
-    // Download comics from MARVEL
-    MarvelAPI().download(.comics, first: 100, startingFrom: 0) {
-      [weak weakSelf = self]
-      response in
-      
-      switch response.result {
-      case .success:
-        weakSelf?.tableView.reloadData()
-      case .failure(let error):
-        //TODO: Present as AlertView
-        print(error.localizedDescription)
-      }
-    }
-
-    showRealmFileLocation()
-    
     setupStyle()
-  }
-  
-//  func loadLocalComics() {
-//    if let path = Bundle.main.path(forResource: "Comics", ofType: "json") {
-//      do {
-//        let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//        if let jsonResult = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
-//          try Comic.create(from: jsonResult)
-//        }
-//      } catch { print(error.localizedDescription) }
-//    }
-//  }
-  
-  func showRealmFileLocation() {
-    let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
-    print(defaultURL)
   }
   
   // MARK: - Style
@@ -67,6 +40,15 @@ class ComicResult: UITableViewController, RealmTable {
     // Register Cells
     tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.reuseIdentifier)
     tableView.register(UINib(nibName: TableCell.nibName, bundle: Bundle.main), forCellReuseIdentifier: TableCell.reuseIdentifier)
+    
+    // Table Variable Row Heights
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = cellHeight
+    
+    // Set dark theme
+    tableView.backgroundColor = UIColor.black
+    tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
+    tableView.indicatorStyle = .white
   }
   
   // MARK: - Table View Data Source
@@ -82,7 +64,13 @@ class ComicResult: UITableViewController, RealmTable {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TableCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.reuseIdentifier, for: indexPath) as! TableCell
     
+    cell.query = query
     cell.object = objects[indexPath.row]
+    
+    // Chenge selected color
+    let bgColorView = UIView()
+    bgColorView.backgroundColor = UIColor.darkGray
+    cell.selectedBackgroundView = bgColorView
     
     return cell
   }

@@ -26,6 +26,10 @@
 		9C4F6CC51EBF5800004D5F23 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CC41EBF5800004D5F23 /* NibLoadableView.swift */; };
 		9C4F6CC71EBF58C1004D5F23 /* ComicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CC61EBF58C1004D5F23 /* ComicCell.xib */; };
 		9C4F6CCA1EBF71DC004D5F23 /* Comics.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CC91EBF71DC004D5F23 /* Comics.json */; };
+		9C4F6CCC1EBF7E05004D5F23 /* ComicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CCB1EBF7E05004D5F23 /* ComicSearch.swift */; };
+		9C4F6CCF1EBF822E004D5F23 /* SearchableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CCD1EBF822E004D5F23 /* SearchableCell.swift */; };
+		9C4F6CD01EBF822E004D5F23 /* SearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CCE1EBF822E004D5F23 /* SearchTable.swift */; };
+		9C4F6CD31EBF82F7004D5F23 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CD21EBF82F7004D5F23 /* String+NSRange.swift */; };
 		9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */; };
 		9CE39B4E1EBCDE1900A08E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4C1EBCDE1900A08E94 /* Main.storyboard */; };
 		9CE39B501EBCDE1900A08E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */; };
@@ -76,6 +80,10 @@
 		9C4F6CC41EBF5800004D5F23 /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadableView.swift; path = Protocol/NibLoadableView.swift; sourceTree = "<group>"; };
 		9C4F6CC61EBF58C1004D5F23 /* ComicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ComicCell.xib; path = View/ComicCell.xib; sourceTree = "<group>"; };
 		9C4F6CC91EBF71DC004D5F23 /* Comics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Comics.json; sourceTree = "<group>"; };
+		9C4F6CCB1EBF7E05004D5F23 /* ComicSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicSearch.swift; path = Controller/ComicSearch.swift; sourceTree = "<group>"; };
+		9C4F6CCD1EBF822E004D5F23 /* SearchableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchableCell.swift; path = Protocol/SearchableCell.swift; sourceTree = "<group>"; };
+		9C4F6CCE1EBF822E004D5F23 /* SearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTable.swift; path = Protocol/SearchTable.swift; sourceTree = "<group>"; };
+		9C4F6CD21EBF82F7004D5F23 /* String+NSRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+NSRange.swift"; path = "Extensions/String+NSRange.swift"; sourceTree = "<group>"; };
 		9CE39B451EBCDE1900A08E94 /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CE39B4D1EBCDE1900A08E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,8 +149,18 @@
 				9C4F6CBC1EBF559A004D5F23 /* ReusableView.swift */,
 				9C4F6CC01EBF5643004D5F23 /* ResultTable.swift */,
 				9C4F6CC41EBF5800004D5F23 /* NibLoadableView.swift */,
+				9C4F6CCD1EBF822E004D5F23 /* SearchableCell.swift */,
+				9C4F6CCE1EBF822E004D5F23 /* SearchTable.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		9C4F6CD11EBF82E8004D5F23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9C4F6CD21EBF82F7004D5F23 /* String+NSRange.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		9CE39B3C1EBCDE1900A08E94 = {
@@ -170,6 +188,7 @@
 		9CE39B471EBCDE1900A08E94 /* MarvelOus */ = {
 			isa = PBXGroup;
 			children = (
+				9C4F6CD11EBF82E8004D5F23 /* Extensions */,
 				9CE39B771EBCDE5F00A08E94 /* View */,
 				9CE39B791EBCDE7800A08E94 /* Interactor */,
 				9CE39B761EBCDE5500A08E94 /* Model */,
@@ -228,8 +247,9 @@
 			isa = PBXGroup;
 			children = (
 				9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */,
-				9C4F6CB71EBF474F004D5F23 /* ComicResult.swift */,
 				9C4F6CC21EBF56D8004D5F23 /* ComicCell.swift */,
+				9C4F6CCB1EBF7E05004D5F23 /* ComicSearch.swift */,
+				9C4F6CB71EBF474F004D5F23 /* ComicResult.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -494,21 +514,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C4F6CAB1EBF396E004D5F23 /* Images.swift in Sources */,
+				9C4F6CCC1EBF7E05004D5F23 /* ComicSearch.swift in Sources */,
 				9C4F6CAC1EBF396E004D5F23 /* Price.swift in Sources */,
 				9C4F6CC31EBF56D8004D5F23 /* ComicCell.swift in Sources */,
 				9CE39B7D1EBCDF6C00A08E94 /* MarvelAPI.swift in Sources */,
 				9C4F6CC11EBF5643004D5F23 /* ResultTable.swift in Sources */,
 				9C4F6CBB1EBF556D004D5F23 /* RealmTable.swift in Sources */,
 				9C4F6CA91EBF396E004D5F23 /* Comic.swift in Sources */,
+				9C4F6CD01EBF822E004D5F23 /* SearchTable.swift in Sources */,
 				9C4F6CBD1EBF559A004D5F23 /* ReusableView.swift in Sources */,
 				9C4F6CAA1EBF396E004D5F23 /* Dates.swift in Sources */,
 				9C4F6CAD1EBF396E004D5F23 /* Series.swift in Sources */,
 				9C4F6CB81EBF474F004D5F23 /* ComicResult.swift in Sources */,
 				9C4F6CB31EBF3C95004D5F23 /* Comic+Create.swift in Sources */,
+				9C4F6CCF1EBF822E004D5F23 /* SearchableCell.swift in Sources */,
 				9C4F6CC51EBF5800004D5F23 /* NibLoadableView.swift in Sources */,
 				9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */,
 				9C4F6CB11EBF3AA1004D5F23 /* Creator.swift in Sources */,
 				9C4F6CA81EBF396E004D5F23 /* Character.swift in Sources */,
+				9C4F6CD31EBF82F7004D5F23 /* String+NSRange.swift in Sources */,
 				9C4F6CBF1EBF55AF004D5F23 /* RealmCell.swift in Sources */,
 				9C4F6CAF1EBF396E004D5F23 /* Thumbnail.swift in Sources */,
 			);
