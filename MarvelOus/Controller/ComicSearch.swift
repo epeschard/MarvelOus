@@ -121,6 +121,33 @@ class ComicSearch: UITableViewController, SearchTable {
     UIApplication.shared.statusBarStyle = .lightContent
   }
   
+  // When user reaches end of table fetch for more Comics
+  override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let offset = scrollView.contentOffset
+    let bounds = scrollView.bounds
+    let size = scrollView.contentSize
+    let inset = scrollView.contentInset
+    let y: Float = Float(offset.y) + Float(bounds.size.height) - Float(inset.bottom)
+    let height: Float = Float(size.height)
+    let reloadDistance: Float = 50
+    
+    if (y > height + reloadDistance) {
+      let lastComic = UserDefaults.standard.integer(forKey: "lastComic")
+      MarvelAPI().download(.comics, first: 100, startingFrom: lastComic, completionHandler: {
+        // avoid memory cycles using weak self in closures
+        [weak weakSelf = self]
+        dataResponse in
+        
+        switch dataResponse.result {
+        case .success:
+          weakSelf?.tableView.reloadData()
+        case .failure(let error):
+          print(error.localizedDescription)
+        }
+      })
+    }
+  }
+  
   // MARK: - TableView DataSource
   
   override func numberOfSections(in tableView: UITableView) -> Int {
