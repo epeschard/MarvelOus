@@ -272,6 +272,7 @@
 				9CE39B511EBCDE1900A08E94 /* LaunchScreen.storyboard */,
 				9C4F6CC61EBF58C1004D5F23 /* ComicCell.xib */,
 				9C4F6CF61EC066F7004D5F23 /* Banner.swift */,
+				9C4F6CC21EBF56D8004D5F23 /* ComicCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -280,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */,
-				9C4F6CC21EBF56D8004D5F23 /* ComicCell.swift */,
 				9C4F6CCB1EBF7E05004D5F23 /* ComicSearch.swift */,
 				9C4F6CB71EBF474F004D5F23 /* ComicResult.swift */,
 				9C4F6CD41EBF9E7E004D5F23 /* ComicDetails.swift */,
