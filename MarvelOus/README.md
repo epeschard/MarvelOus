@@ -10,7 +10,8 @@
 * Custom animations are explored to provide Attribution on the ComicSearch screen
 * Unit tests are provided for the database loading as well as all calls to MARVEL servers
 * UI tests were started for most functionalities
-* All text supports dynamic text to easily adjust fontsize preferences 
+* All text supports dynamic text to easily adjust fontsize preferences
+* Added branch with MARVEL custom font allover but hasn't been merged since it doesn't support Dynamic Font yet
 
 ### Info:
 - Marvel API: http://developer.marvel.com/
