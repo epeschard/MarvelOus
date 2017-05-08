@@ -18,7 +18,7 @@ extension UITableViewController {
     //set the message
     messageLbl.text = text
     
-    messageLbl.font = UIFont.systemFont(ofSize: 19)
+    messageLbl.font = headlineFont //UIFont.systemFont(ofSize: 19)
     messageLbl.textColor = UIColor.gray
     
     // Attributed Text

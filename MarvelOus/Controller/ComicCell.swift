@@ -88,8 +88,8 @@ extension ComicCell: RealmCell {
   
   func setFonts() {
     // this will be used for custom fonts
-    titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-    descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
+    titleLabel.font = headlineFont //UIFont.preferredFont(forTextStyle: .headline)
+    descriptionLabel.font = bodyFont //UIFont.preferredFont(forTextStyle: .body)
   }
   
   func clearOutlets() {

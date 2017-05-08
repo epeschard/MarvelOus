@@ -483,20 +483,31 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Comic Details" id="GIP-BX-vF1"/>
                     <connections>
+                        <outlet property="attributionLabel" destination="n2w-hP-3gy" id="spF-5J-hBg"/>
                         <outlet property="characterLabel" destination="mnc-HY-CLY" id="lZu-2X-TR8"/>
+                        <outlet property="characterTitle" destination="Tzi-xA-2eQ" id="kpG-4J-4Gb"/>
                         <outlet property="creatorLabel" destination="LTq-jN-kXn" id="TJ0-Qs-FzQ"/>
+                        <outlet property="creatorTitle" destination="wR1-Ld-iZE" id="9VW-56-8T4"/>
                         <outlet property="datesLabel" destination="LcD-mQ-U7G" id="H9f-0b-mm3"/>
+                        <outlet property="datesTitle" destination="Ugx-q1-iaI" id="qBn-za-cd0"/>
                         <outlet property="descriptionLabel" destination="Qa3-pe-5w1" id="hlK-eN-GRM"/>
+                        <outlet property="descriptionTitle" destination="wgV-un-5D2" id="l5n-ly-UMc"/>
                         <outlet property="eanLabel" destination="xJ9-xq-bRn" id="CGD-hp-gVh"/>
+                        <outlet property="eanTitle" destination="nah-Ic-ip4" id="OEo-wy-CT1"/>
                         <outlet property="formatLabel" destination="0AR-ky-8Jl" id="WlO-Mq-IPT"/>
+                        <outlet property="formatTitle" destination="jTB-PR-sXa" id="SN1-lc-ADs"/>
                         <outlet property="issueNumberLabel" destination="Doa-nA-TVy" id="TJ4-3C-uGU"/>
+                        <outlet property="issueNumberTitle" destination="qrU-AT-b3G" id="WKy-AN-wcy"/>
                         <outlet property="pagesLabel" destination="Ncb-48-7Zd" id="X4a-dl-TkR"/>
+                        <outlet property="pagesTitle" destination="niZ-Ym-g1W" id="Y2s-UT-Hjp"/>
                         <outlet property="priceLabel" destination="iIT-Ak-poB" id="Isv-XJ-fmy"/>
                         <outlet property="priceType" destination="5sa-Ld-SNI" id="l4q-JN-Xrv"/>
                         <outlet property="thumbnail" destination="TSB-46-i4m" id="1X2-HU-suU"/>
                         <outlet property="titleLabel" destination="izd-yF-s9K" id="gp9-EE-Zq4"/>
                         <outlet property="upcLabel" destination="ndv-m1-oVp" id="exQ-ok-88R"/>
+                        <outlet property="upcTitle" destination="DBR-Go-YvC" id="Yza-lP-9t8"/>
                         <outlet property="variantsLabel" destination="2Ef-dL-21y" id="6pE-0a-wvs"/>
+                        <outlet property="variantsTitle" destination="2Km-OP-cFu" id="rQy-qm-hFU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWn-qQ-Kmr" userLabel="First Responder" sceneMemberID="firstResponder"/>

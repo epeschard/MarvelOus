@@ -32,6 +32,7 @@ class PopoverTable: UITableViewController {
     
     cell.textLabel?.text = objects[indexPath.row]
     cell.textLabel?.textColor = UIColor.white
+    cell.textLabel?.font = subheadlineFont
     cell.backgroundColor = UIColor.black
     cell.selectionStyle = .none
     

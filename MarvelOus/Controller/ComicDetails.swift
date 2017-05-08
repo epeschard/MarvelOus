@@ -28,18 +28,30 @@ class ComicDetails: UITableViewController {
   @IBOutlet weak var thumbnail: UIImageView!
   
   @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var descriptionTitle: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var formatTitle: UILabel!
   @IBOutlet weak var formatLabel: UILabel!
   @IBOutlet weak var priceType: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
+  @IBOutlet weak var characterTitle: UILabel!
   @IBOutlet weak var characterLabel: UILabel!
+  @IBOutlet weak var creatorTitle: UILabel!
   @IBOutlet weak var creatorLabel: UILabel!
+  @IBOutlet weak var variantsTitle: UILabel!
   @IBOutlet weak var variantsLabel: UILabel!
+  @IBOutlet weak var datesTitle: UILabel!
   @IBOutlet weak var datesLabel: UILabel!
+  @IBOutlet weak var pagesTitle: UILabel!
   @IBOutlet weak var pagesLabel: UILabel!
+  @IBOutlet weak var issueNumberTitle: UILabel!
   @IBOutlet weak var issueNumberLabel: UILabel!
+  @IBOutlet weak var eanTitle: UILabel!
   @IBOutlet weak var eanLabel: UILabel!
+  @IBOutlet weak var upcTitle: UILabel!
   @IBOutlet weak var upcLabel: UILabel!
+  @IBOutlet weak var attributionLabel: UILabel!
+  
   
   // MARK: - TableViewCell Heights
   
@@ -154,6 +166,35 @@ class ComicDetails: UITableViewController {
     // Price formatter
     formatter.numberStyle = .currency
     formatter.currencyCode = "USD"
+    
+    setFonts()
+  }
+  
+  func setFonts() {
+    titleLabel.font = bodyFont
+    descriptionTitle.font = bodyFont
+    descriptionLabel.font = bodyFont
+    formatTitle.font = bodyFont
+    formatLabel.font = bodyFont
+    priceType.font = bodyFont
+    priceLabel.font = bodyFont
+    characterTitle.font = bodyFont
+    characterLabel.font = bodyFont
+    creatorTitle.font = bodyFont
+    creatorLabel.font = bodyFont
+    variantsTitle.font = bodyFont
+    variantsLabel.font = bodyFont
+    datesTitle.font = bodyFont
+    datesLabel.font = bodyFont
+    pagesTitle.font = bodyFont
+    pagesLabel.font = bodyFont
+    issueNumberTitle.font = bodyFont
+    issueNumberLabel.font = bodyFont
+    eanTitle.font = bodyFont
+    eanLabel.font = bodyFont
+    upcTitle.font = bodyFont
+    upcLabel.font = bodyFont
+    attributionLabel.font = bodyFont
   }
   
   // MARK: - TableView Delegate
@@ -275,7 +316,7 @@ class ComicDetails: UITableViewController {
     
     let nav = UINavigationController(rootViewController: table)
     nav.navigationBar.barTintColor = marvelRed
-    nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    nav.navigationBar.titleTextAttributes = [NSFontAttributeName: subheadlineFont, NSForegroundColorAttributeName: UIColor.white]
     nav.modalPresentationStyle = .popover
     table.navigationItem.title = title
     

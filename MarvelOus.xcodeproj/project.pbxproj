@@ -39,6 +39,12 @@
 		9C4F6CE11EBFC183004D5F23 /* CardAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */; };
 		9C4F6CE41EBFCD2F004D5F23 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE31EBFCD2F004D5F23 /* README.md */; };
 		9C4F6CE61EBFCD38004D5F23 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE51EBFCD38004D5F23 /* LICENSE.md */; };
+		9C4F6CED1EC04D29004D5F23 /* Marvel-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE81EC04D29004D5F23 /* Marvel-Bold.ttf */; };
+		9C4F6CEE1EC04D29004D5F23 /* Marvel-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE91EC04D29004D5F23 /* Marvel-BoldItalic.ttf */; };
+		9C4F6CEF1EC04D29004D5F23 /* Marvel-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CEA1EC04D29004D5F23 /* Marvel-Italic.ttf */; };
+		9C4F6CF01EC04D29004D5F23 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CEB1EC04D29004D5F23 /* Marvel-Regular.ttf */; };
+		9C4F6CF11EC04D29004D5F23 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F6CEC1EC04D29004D5F23 /* SIL Open Font License.txt */; };
+		9C4F6CF31EC04D75004D5F23 /* UIFontDescriptor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CF21EC04D75004D5F23 /* UIFontDescriptor+Custom.swift */; };
 		9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */; };
 		9CE39B4E1EBCDE1900A08E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4C1EBCDE1900A08E94 /* Main.storyboard */; };
 		9CE39B501EBCDE1900A08E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */; };
@@ -102,6 +108,12 @@
 		9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardAnimation.swift; path = Controller/CardAnimation.swift; sourceTree = "<group>"; };
 		9C4F6CE31EBFCD2F004D5F23 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9C4F6CE51EBFCD38004D5F23 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		9C4F6CE81EC04D29004D5F23 /* Marvel-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Bold.ttf"; sourceTree = "<group>"; };
+		9C4F6CE91EC04D29004D5F23 /* Marvel-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-BoldItalic.ttf"; sourceTree = "<group>"; };
+		9C4F6CEA1EC04D29004D5F23 /* Marvel-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Italic.ttf"; sourceTree = "<group>"; };
+		9C4F6CEB1EC04D29004D5F23 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
+		9C4F6CEC1EC04D29004D5F23 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		9C4F6CF21EC04D75004D5F23 /* UIFontDescriptor+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFontDescriptor+Custom.swift"; path = "Extensions/UIFontDescriptor+Custom.swift"; sourceTree = "<group>"; };
 		9CE39B451EBCDE1900A08E94 /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CE39B4D1EBCDE1900A08E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -179,6 +191,7 @@
 			children = (
 				9C4F6CD21EBF82F7004D5F23 /* String+NSRange.swift */,
 				9C4F6CD81EBFA888004D5F23 /* TableView+Empty.swift */,
+				9C4F6CF21EC04D75004D5F23 /* UIFontDescriptor+Custom.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +204,19 @@
 				9CE39B541EBCDE1900A08E94 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C4F6CE71EC04D29004D5F23 /* MARVEL fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9C4F6CE81EC04D29004D5F23 /* Marvel-Bold.ttf */,
+				9C4F6CE91EC04D29004D5F23 /* Marvel-BoldItalic.ttf */,
+				9C4F6CEA1EC04D29004D5F23 /* Marvel-Italic.ttf */,
+				9C4F6CEB1EC04D29004D5F23 /* Marvel-Regular.ttf */,
+				9C4F6CEC1EC04D29004D5F23 /* SIL Open Font License.txt */,
+			);
+			name = "MARVEL fonts";
+			path = "View/MARVEL fonts";
 			sourceTree = "<group>";
 		};
 		9CE39B3C1EBCDE1900A08E94 = {
@@ -265,6 +291,7 @@
 		9CE39B771EBCDE5F00A08E94 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C4F6CE71EC04D29004D5F23 /* MARVEL fonts */,
 				9CE39B4C1EBCDE1900A08E94 /* Main.storyboard */,
 				9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */,
 				9CE39B511EBCDE1900A08E94 /* LaunchScreen.storyboard */,
@@ -425,9 +452,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C4F6CF01EC04D29004D5F23 /* Marvel-Regular.ttf in Resources */,
+				9C4F6CF11EC04D29004D5F23 /* SIL Open Font License.txt in Resources */,
 				9C4F6CC71EBF58C1004D5F23 /* ComicCell.xib in Resources */,
+				9C4F6CEF1EC04D29004D5F23 /* Marvel-Italic.ttf in Resources */,
 				9C4F6CCA1EBF71DC004D5F23 /* Comics.json in Resources */,
 				9CE39B531EBCDE1900A08E94 /* LaunchScreen.storyboard in Resources */,
+				9C4F6CED1EC04D29004D5F23 /* Marvel-Bold.ttf in Resources */,
+				9C4F6CEE1EC04D29004D5F23 /* Marvel-BoldItalic.ttf in Resources */,
 				9CE39B7B1EBCDF5400A08E94 /* apikeys.plist in Resources */,
 				9CE39B501EBCDE1900A08E94 /* Assets.xcassets in Resources */,
 				9CE39B4E1EBCDE1900A08E94 /* Main.storyboard in Resources */,
@@ -566,6 +598,7 @@
 				9C4F6CAD1EBF396E004D5F23 /* Series.swift in Sources */,
 				9C4F6CB81EBF474F004D5F23 /* ComicResult.swift in Sources */,
 				9C4F6CD71EBF9FBC004D5F23 /* Identifiable.swift in Sources */,
+				9C4F6CF31EC04D75004D5F23 /* UIFontDescriptor+Custom.swift in Sources */,
 				9C4F6CB31EBF3C95004D5F23 /* Comic+Create.swift in Sources */,
 				9C4F6CCF1EBF822E004D5F23 /* SearchableCell.swift in Sources */,
 				9C4F6CC51EBF5800004D5F23 /* NibLoadableView.swift in Sources */,

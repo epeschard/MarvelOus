@@ -10,6 +10,12 @@ import UIKit
 // convenient global variable for app's tintColor
 let marvelRed = UIColor(red:0.93, green:0.10, blue:0.16, alpha:1.00)
 
+// Cutom Fonts
+let headlineFont = UIFont(descriptor: UIFontDescriptor.preferredCustomFontDesciptor(for: .headline), size: 0)
+let subheadlineFont = UIFont(descriptor: UIFontDescriptor.preferredCustomFontDesciptor(for: .subheadline), size: 0)
+let bodyFont = UIFont(descriptor: UIFontDescriptor.preferredCustomFontDesciptor(for: .body), size: 0)
+let footnoteFont = UIFont(descriptor: UIFontDescriptor.preferredCustomFontDesciptor(for: .footnote), size: 0)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,6 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // Add displayMode button as left barButton item
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    // Change Navigation bar font
+    let navigationBarAppearace = UINavigationBar.appearance()
+    navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: subheadlineFont]
+    let barButtonsAppearance = UIBarButtonItem.appearance()
+    barButtonsAppearance.setTitleTextAttributes([NSFontAttributeName: subheadlineFont], for: .normal)
+    // Change Search field font
+    if #available(iOS 9.0, *) {
+      UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSFontAttributeName: UIFont(name: "Marvel-Regular", size: 15)!]
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    // Customize SplitViewController
     let splitViewController = self.window!.rootViewController as! UISplitViewController
     let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
     navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
