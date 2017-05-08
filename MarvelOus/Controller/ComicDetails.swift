@@ -72,6 +72,19 @@ class ComicDetails: UITableViewController {
     super.viewDidLoad()
     
     setupStyle()
+    
+    // Listen for changes to Dynamic Text
+    NotificationCenter.default.addObserver(self, selector: #selector(preferredContentSizeDidChange(forChildContentContainer:)), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+  }
+  
+  // Removel listener for changes to Dynamic Text
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    setFonts()
   }
   
   func updateLabels(with object: Comic) {
@@ -168,6 +181,11 @@ class ComicDetails: UITableViewController {
     formatter.currencyCode = "USD"
     
     setFonts()
+  }
+  
+  override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
+    setFonts()
+    tableView.reloadData()
   }
   
   func setFonts() {

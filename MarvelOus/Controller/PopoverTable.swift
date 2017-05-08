@@ -14,6 +14,20 @@ class PopoverTable: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.reloadData()
+    
+    // Listen for changes to Dynamic Text
+    NotificationCenter.default.addObserver(self, selector: #selector(preferredContentSizeDidChange(forChildContentContainer:)), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+  }
+  
+  // Removel listener for changes to Dynamic Text
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  // MARK: - Dynamic Text Fonts
+  
+  func updateFonts() {
+    
   }
   
   // MARK: - TableView DataSource
