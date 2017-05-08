@@ -74,8 +74,11 @@ extension ComicCell: RealmCell {
           case .success:
             do {
               let data = try response.result.unwrap()
-              // update the cell's image with the data
-              weakSelf?.iconImageView.image = UIImage(data: data)
+              // Check if the cell hasn't been reused
+              if weakSelf?.object == comic {
+                // update the cell's image with the data
+                weakSelf?.iconImageView.image = UIImage(data: data)
+              }
               // store data in Realm for next time
               do {
                 try Realm().write {
