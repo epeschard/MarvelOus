@@ -36,6 +36,7 @@ class MarvelAPI {
         let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
         if let jsonResult = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
           try Comic.create(from: jsonResult)
+          UserDefaults.standard.set(true, forKey: "savedLocal")
         }
       } catch { print(error.localizedDescription) }
     }
@@ -118,6 +119,9 @@ class MarvelAPI {
             } catch {
               print(error.localizedDescription)
             }
+            // Save last comic fetched in UserDefaults
+            let lastComic = offset + limit
+            UserDefaults.standard.set(lastComic, forKey: "lastComic")
           case .failure(let error):
             print(error.localizedDescription)
           }

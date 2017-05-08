@@ -36,31 +36,35 @@ class ComicSearch: UITableViewController, SearchTable {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Load local copy first for better UX
-    MarvelAPI.loadLocalComics()
-    // Download comics from MARVEL
-    MarvelAPI().download(.comics, first: 100, startingFrom: 0) {
-      // avoid memory cycles using weak self in closures
-      [weak weakSelf = self]
-      response in
+    // Only load JSON on first launch
+    if !UserDefaults.standard.bool(forKey: "savedLocal") {
+      // Load local copy first for better UX
+      MarvelAPI.loadLocalComics()
       
-      switch response.result {
-      case .success:
-        weakSelf?.tableView.reloadData()
-      case .failure(let error):
-        // we will notify the user that we failed to get new data from MARVEL
-        let alert = UIAlertController(title: "Download Failed",
-                                      message: error.localizedDescription,
-                                      preferredStyle: .alert)
-        let defaultButton = UIAlertAction(title: "OK",
-                                          style: .default) {(_) in
-                                            // your defaultButton action goes here
+      // Download comics from MARVEL
+      MarvelAPI().download(.comics, first: 100, startingFrom: 0) {
+        // avoid memory cycles using weak self in closures
+        [weak weakSelf = self]
+        response in
+        
+        switch response.result {
+        case .success:
+          weakSelf?.tableView.reloadData()
+        case .failure(let error):
+          // we will notify the user that we failed to get new data from MARVEL
+          let alert = UIAlertController(title: "Download Failed",
+                                        message: error.localizedDescription,
+                                        preferredStyle: .alert)
+          let defaultButton = UIAlertAction(title: "OK",
+                                            style: .default) {(_) in
+                                              // your defaultButton action goes here
+          }
+          
+          alert.addAction(defaultButton)
+          weakSelf?.present(alert, animated: true)
         }
         
-        alert.addAction(defaultButton)
-        weakSelf?.present(alert, animated: true)
       }
-      
     }
     
     setupStyle()

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,8 +24,8 @@
                         <rect key="frame" x="0.0" y="0.5" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="2Qk-7Y-Adj"/>
-                            <constraint firstAttribute="height" constant="100" id="DdC-bY-bCV"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="RMg-zq-FMi"/>
+                            <constraint firstAttribute="width" secondItem="Unc-Uz-AX4" secondAttribute="height" multiplier="1:1" id="k30-Cj-wSw"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
