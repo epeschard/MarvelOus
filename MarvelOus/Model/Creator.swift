@@ -3,7 +3,6 @@
 //  MarvelOus
 //
 //  Created by Eugène Peschard on 07/05/2017.
-//  Copyright © 2017 Wallapop. All rights reserved.
 //
 
 import RealmSwift

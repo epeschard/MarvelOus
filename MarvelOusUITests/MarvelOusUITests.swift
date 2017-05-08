@@ -3,7 +3,6 @@
 //  MarvelOusUITests
 //
 //  Created by Eugène Peschard on 05/05/2017.
-//  Copyright © 2017 Wallapop. All rights reserved.
 //
 
 import XCTest
@@ -37,6 +36,7 @@ class MarvelOusUITests: XCTestCase {
     app.buttons["Comics"].tap()
     app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
     app.searchFields["Search"].tap()
+    
     
   }
   
@@ -91,6 +91,10 @@ class MarvelOusUITests: XCTestCase {
   
   func testComicDetails() {
     XCUIApplication().tables.staticTexts["MARVEL FUTURE FIGHT: AN EYE ON THE FUTURE, presented by NETMARBLE (2017)"].tap()
+    
+  }
+  
+  func testComicDetailsPopOver() {
     
   }
   

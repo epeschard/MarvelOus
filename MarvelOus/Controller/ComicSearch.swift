@@ -3,7 +3,6 @@
 //  MarvelOus
 //
 //  Created by Eugène Peschard on 07/05/2017.
-//  Copyright © 2017 Wallapop. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +17,6 @@ class ComicSearch: UITableViewController, SearchTable {
   let cellHeight = CGFloat(100.0)
   
   // MARK: - RealmTable protocol
-  //  @IBOutlet tableView: UITableView!
   
   var objects = try! Realm().objects(TableCell.Entity.self) {
     didSet {
@@ -42,6 +40,7 @@ class ComicSearch: UITableViewController, SearchTable {
     MarvelAPI.loadLocalComics()
     // Download comics from MARVEL
     MarvelAPI().download(.comics, first: 100, startingFrom: 0) {
+      // avoid memory cycles using weak self in closures
       [weak weakSelf = self]
       response in
       
@@ -49,6 +48,7 @@ class ComicSearch: UITableViewController, SearchTable {
       case .success:
         weakSelf?.tableView.reloadData()
       case .failure(let error):
+        // we will notify the user that we failed to get new data from MARVEL
         let alert = UIAlertController(title: "Download Failed",
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
@@ -71,22 +71,22 @@ class ComicSearch: UITableViewController, SearchTable {
     if #available(iOS 9.0, *) {
       searchController?.loadViewIfNeeded()
     } else {
-      // Fallback on earlier versions
+      // Include fallback for earlier versions
     }
     
-    // Split View Controller
+    // Add displayMode as left bar button item on detailView
     if let split = self.splitViewController {
       let controllers = split.viewControllers
       detailView = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailVC
       
       split.navigationItem.leftBarButtonItem = split.displayModeButtonItem
       split.delegate = self
+      // avoid closing master on iPad portrait for example
       split.preferredDisplayMode = .allVisible
     }
     
-    // Avoid haing ComicDetail with no selection
+    // Avoid having ComicDetail with no selection
     if splitViewController?.displayMode == .allVisible {
-//    if UIDevice.current.userInterfaceIdiom == .pad {
       let firstIndexPath = IndexPath(row: 0, section: 0)
       self.tableView.selectRow(at: firstIndexPath, animated: true, scrollPosition: .none)
       select(rowAt: firstIndexPath)
@@ -96,6 +96,7 @@ class ComicSearch: UITableViewController, SearchTable {
   // MARK: - Style
   
   func setupStyle() {
+    // register Comic cell from nib to use it on both Search & Result's tables
     tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.reuseIdentifier)
     tableView.register(UINib(nibName: TableCell.nibName, bundle: Bundle.main), forCellReuseIdentifier: TableCell.reuseIdentifier)
     
@@ -113,7 +114,6 @@ class ComicSearch: UITableViewController, SearchTable {
     tableView.backgroundColor = UIColor.black
     tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
     tableView.indicatorStyle = .white
-    
     UIApplication.shared.statusBarStyle = .lightContent
   }
   
@@ -132,7 +132,7 @@ class ComicSearch: UITableViewController, SearchTable {
     let cell = tableView.dequeueReusableCell(withIdentifier: "\(TableCell.self)") as! TableCell
     cell.object = objects[indexPath.row]
     
-    // Chenge selected color
+    // Change selected color default is too light
     let bgColorView = UIView()
     bgColorView.backgroundColor = UIColor.darkGray
     cell.selectedBackgroundView = bgColorView
@@ -144,11 +144,13 @@ class ComicSearch: UITableViewController, SearchTable {
     select(rowAt: indexPath)
   }
   
+  // function to be used by tableView:didSelectRowAt & auto selection
   func select(rowAt indexPath: IndexPath) {
     if splitViewController?.viewControllers.count == 1 {
       tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // handle selection for both search and resuls tebles
     if tableView == resultController?.tableView {
       performSegue(withIdentifier: DetailVC.identifier, sender: resultController?.objects[indexPath.row])
     } else {
@@ -157,6 +159,7 @@ class ComicSearch: UITableViewController, SearchTable {
   }
   
   // MARK: - Table View Delegate
+  // No real need to delete rows since these will regenerate from MARVEL fetch
   
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     // Return false if you do not want the specified item to be editable.
@@ -195,7 +198,8 @@ class ComicSearch: UITableViewController, SearchTable {
       controller.navigationItem.leftItemsSupplementBackButton = true
     }
   }
-    
+  
+  // unwind segue from attribution with animated card UI
   @IBAction func closeCard(segue:UIStoryboardSegue) {
   }
   
@@ -244,7 +248,19 @@ extension ComicSearch: UISearchResultsUpdating,
     
     let resultsTable = searchController.searchResultsController as! ResultVC
     resultsTable.query = searchController.searchBar.text!
-    resultsTable.objects = objects.filter(finalCompoundPredicate)
+    
+    // Use scope buttons to change the search results
+//    resultsTable.objects = objects.filter(finalCompoundPredicate)
+    switch searchController.searchBar.selectedScopeButtonIndex {
+    case 0: // Search Comics only
+      objects = objects.filter("format == %@", "Comic")
+      resultsTable.objects = objects.filter(finalCompoundPredicate)
+    case 1: // Search all, digital and Infinite too
+      resultsTable.objects = try! Realm().objects(TableCell.Entity.self).filter(finalCompoundPredicate)
+    default:
+      resultsTable.objects = try! Realm().objects(TableCell.Entity.self).filter(finalCompoundPredicate)
+    }
+    resultsTable.tableView.reloadData()
   }
   
   func setupSearchControllerWith(_ results: ResultVC) {
@@ -255,7 +271,6 @@ extension ComicSearch: UISearchResultsUpdating,
     // Cell Height
     results.tableView.estimatedRowHeight = cellHeight
     results.tableView.rowHeight = UITableViewAutomaticDimension
-//    results.textForEmptyLabel = textForEmptyLabel
     
     // We want to be the delegate for our filtered table so didSelectRowAtIndexPath(_:) is called for both tables.
     results.tableView.delegate = self
@@ -263,7 +278,7 @@ extension ComicSearch: UISearchResultsUpdating,
     searchController = UISearchController(searchResultsController: results)
     
     // Set Scope Bar Buttons
-    searchController.searchBar.scopeButtonTitles = ["Comics", "All"]
+    searchController.searchBar.scopeButtonTitles = ["Comics only", "Digital too"]
     
     // Set Search Bar
     searchController.searchResultsUpdater = self
@@ -289,6 +304,11 @@ extension ComicSearch: UISearchResultsUpdating,
     // hierarchy until it finds the root view controller or one that defines a presentation context.
     definesPresentationContext = true
   }
+  
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    updateSearchResults(for: searchController)
+  }
+
 
 }
 

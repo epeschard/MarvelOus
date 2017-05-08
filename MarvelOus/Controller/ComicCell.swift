@@ -1,9 +1,8 @@
 //
 //  ComicCell.swift
-//  PruebaWallapop
+//  MarvelOus
 //
 //  Created by Eugène Peschard on 06/05/2017.
-//  Copyright © 2017 PeschApps. All rights reserved.
 //
 
 import UIKit
@@ -46,6 +45,7 @@ extension ComicCell: RealmCell {
     if let comic = object,
       let title = comic.title {
       
+      // greyout labels and highlight query during search
       if query != "" {
         grayoutLabels()
         let tint: [String: AnyObject] = [NSForegroundColorAttributeName : marvelRed]
@@ -55,23 +55,30 @@ extension ComicCell: RealmCell {
       }
       descriptionLabel.text = comic.format
       
+      // images are added and stored in Realm after first JSON download
       if let nsData = comic.thumbnail?.data {
         iconImageView.image = UIImage(data: nsData as Data)
       } else if let thumbnail = comic.thumbnail {
+        // we haven't sored the image's data so use placeholder while we fetch it
         iconImageView.image = UIImage(named: "placeholder")
-        // Fetch Images
+        // Fetch Image from MARVAL's api
         MarvelAPI().getData(for: thumbnail, from: thumbnail.path, completionHandler: {
+          // avoid memory cycles using weak self in closures
           [weak weakSelf = self]
           response in
           switch response.result {
           case .success:
             do {
               let data = try response.result.unwrap()
+              // update the cell's image with the data
               weakSelf?.iconImageView.image = UIImage(data: data)
+              // store data in Realm for next time
+              comic.thumbnail?.data = data as NSData
             } catch {
               print(error.localizedDescription)
             }
           case .failure(let error):
+            // no need to interrupt user if we fail to get image, we have the placeholder
             print(error.localizedDescription)
           }
         })
@@ -80,22 +87,26 @@ extension ComicCell: RealmCell {
   }
   
   func setFonts() {
+    // this will be used for custom fonts
     titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
     descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
   }
   
   func clearOutlets() {
+    // avoid having unclean data for reused cells
     titleLabel.text = nil
     descriptionLabel.text = nil
   }
 
   func grayoutLabels() {
+    // change colors to dim everything that's not highlightes during search
     titleLabel.textColor = UIColor.lightGray
     descriptionLabel.textColor = UIColor.gray
   }
   
 }
 
+// protocol extensions are used to add properties for Xib, Cell and segue identifiers
 // MARK: - NibLoadableView Cell Extension
 
 extension ComicCell: NibLoadableView { }
@@ -108,6 +119,7 @@ extension ComicCell: ReusableView { }
 
 extension ComicCell: SearchableCell {
   
+  // convenience function to highlight query during search
   func highlighted(_ query:String, in string:String, with attributes: [String: AnyObject]) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(string: string)
     if query != "" {

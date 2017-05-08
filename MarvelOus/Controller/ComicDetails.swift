@@ -3,7 +3,6 @@
 //  MarvelOus
 //
 //  Created by Eugène Peschard on 07/05/2017.
-//  Copyright © 2017 Wallapop. All rights reserved.
 //
 
 import UIKit
@@ -159,6 +158,7 @@ class ComicDetails: UITableViewController {
   
   // MARK: - TableView Delegate
   
+  // set height to 0 for cells with no content
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     switch indexPath.row {
@@ -196,6 +196,7 @@ class ComicDetails: UITableViewController {
     }
   }
   
+  // Present popover from accessory button
   override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
     
     let cell = (tableView.cellForRow(at: indexPath)?.frame)!

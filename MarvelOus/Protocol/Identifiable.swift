@@ -3,7 +3,6 @@
 //  Gourmi.es
 //
 //  Created by Eugène Peschard on 29/04/2017.
-//  Copyright © 2017 PeschApps. All rights reserved.
 //
 
 import UIKit

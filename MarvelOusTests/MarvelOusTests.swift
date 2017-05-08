@@ -3,7 +3,6 @@
 //  MarvelOusTests
 //
 //  Created by Eugène Peschard on 05/05/2017.
-//  Copyright © 2017 Wallapop. All rights reserved.
 //
 
 import XCTest

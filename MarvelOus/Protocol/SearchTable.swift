@@ -1,9 +1,8 @@
 //
 //  SearchTable.swift
-//  PruebaWallapop
+//  MarvelOus
 //
 //  Created by Eugène Peschard on 06/05/2017.
-//  Copyright © 2017 PeschApps. All rights reserved.
 //
 
 import UIKit
