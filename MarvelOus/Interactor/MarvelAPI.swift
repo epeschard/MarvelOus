@@ -129,7 +129,7 @@ class MarvelAPI {
 //  func process(_ response: )
   
   func getData(for thumbnail: Thumbnail, from path: String, completionHandler: @escaping (DataResponse<Data>) -> Void) {
-    
+    // Complete url for image variants - http://developer.marvel.com/documentation/images
     if let url = URL(string: path + "/standard_xlarge.jpg") {
       //      print(url)
       Alamofire.request(url)

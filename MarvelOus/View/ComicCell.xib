@@ -12,18 +12,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ComicCell" rowHeight="63" id="YAs-oM-SYw" userLabel="ComicCell" customClass="ComicCell" customModule="MarvelOus">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ComicCell" rowHeight="137" id="YAs-oM-SYw" userLabel="ComicCell" customClass="ComicCell" customModule="MarvelOus">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAs-oM-SYw" id="SlT-GX-qW6">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="62.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="341" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Unc-Uz-AX4">
-                        <rect key="frame" x="8" y="10.5" width="42" height="42"/>
+                        <rect key="frame" x="0.0" y="0.5" width="100" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="42" id="2Qk-7Y-Adj"/>
-                            <constraint firstAttribute="height" constant="42" id="DdC-bY-bCV"/>
+                            <constraint firstAttribute="width" constant="100" id="2Qk-7Y-Adj"/>
+                            <constraint firstAttribute="height" constant="100" id="DdC-bY-bCV"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="RMg-zq-FMi"/>
                         </constraints>
                         <variation key="default">
@@ -32,29 +32,34 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqe-eY-awb">
-                        <rect key="frame" x="58" y="8" width="36" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqe-eY-awb">
+                        <rect key="frame" x="108" y="41" width="226" height="20.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWk-55-kkH">
-                        <rect key="frame" x="58" y="37" width="88" height="17.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWk-55-kkH" customClass="Banner" customModule="MarvelOus" customModuleProvider="target">
+                        <rect key="frame" x="267" y="8" width="120" height="21"/>
+                        <color key="backgroundColor" red="0.9400024414" green="0.076443262400000003" blue="0.1166153923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="782-IK-I73"/>
+                        </constraints>
+                        <edgeInsets key="layoutMargins" top="8" left="15" bottom="8" right="8"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oWk-55-kkH" firstAttribute="top" secondItem="Xqe-eY-awb" secondAttribute="bottom" constant="8" symbolic="YES" id="8XK-cf-JOH"/>
-                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Xqe-eY-awb" secondAttribute="trailing" id="R88-ew-MxL"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="oWk-55-kkH" secondAttribute="bottom" id="YSa-cX-M3d"/>
+                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Unc-Uz-AX4" secondAttribute="bottom" id="6Ed-HQ-QAv"/>
+                    <constraint firstItem="Xqe-eY-awb" firstAttribute="leading" secondItem="Unc-Uz-AX4" secondAttribute="trailing" constant="8" symbolic="YES" id="985-Uo-uFE"/>
+                    <constraint firstItem="Unc-Uz-AX4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SlT-GX-qW6" secondAttribute="top" id="9eV-KD-EIw"/>
+                    <constraint firstItem="oWk-55-kkH" firstAttribute="top" secondItem="SlT-GX-qW6" secondAttribute="top" constant="8" id="D9x-C5-xPt"/>
+                    <constraint firstItem="Xqe-eY-awb" firstAttribute="centerY" secondItem="Unc-Uz-AX4" secondAttribute="centerY" id="JI9-aB-hCb"/>
+                    <constraint firstItem="Unc-Uz-AX4" firstAttribute="leading" secondItem="SlT-GX-qW6" secondAttribute="leading" id="SdI-pa-69n"/>
+                    <constraint firstAttribute="trailing" secondItem="oWk-55-kkH" secondAttribute="trailing" constant="-45" id="Uyd-Wv-QUt"/>
                     <constraint firstItem="Unc-Uz-AX4" firstAttribute="centerY" secondItem="SlT-GX-qW6" secondAttribute="centerY" id="eUb-eD-Nca"/>
-                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="oWk-55-kkH" secondAttribute="trailing" id="ebb-8e-l80"/>
-                    <constraint firstItem="Unc-Uz-AX4" firstAttribute="leading" secondItem="SlT-GX-qW6" secondAttribute="leadingMargin" id="fYE-k4-1MT"/>
-                    <constraint firstItem="oWk-55-kkH" firstAttribute="leading" secondItem="Xqe-eY-awb" secondAttribute="leading" id="nI2-mU-CM5"/>
-                    <constraint firstAttribute="topMargin" secondItem="Xqe-eY-awb" secondAttribute="top" id="nVn-5q-4PA"/>
-                    <constraint firstItem="Xqe-eY-awb" firstAttribute="leading" secondItem="Unc-Uz-AX4" secondAttribute="trailing" constant="8" symbolic="YES" id="omT-wY-Vry"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Xqe-eY-awb" secondAttribute="trailing" id="vTT-42-KKe"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,6 +68,7 @@
                 <outlet property="iconImageView" destination="Unc-Uz-AX4" id="DT4-7y-QLp"/>
                 <outlet property="titleLabel" destination="Xqe-eY-awb" id="tH4-4e-EeG"/>
             </connections>
+            <point key="canvasLocation" x="34.5" y="121"/>
         </tableViewCell>
     </objects>
 </document>

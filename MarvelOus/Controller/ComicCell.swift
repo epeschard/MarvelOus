@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 class ComicCell: UITableViewCell {
   @IBOutlet weak var titleLabel: UILabel!
@@ -54,6 +55,9 @@ extension ComicCell: RealmCell {
         titleLabel.text = comic.title
       }
       descriptionLabel.text = comic.format
+      descriptionLabel.layer.cornerRadius = 10
+      descriptionLabel.clipsToBounds = true
+//      descriptionLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 4))
       
       // images are added and stored in Realm after first JSON download
       if let nsData = comic.thumbnail?.data {
@@ -73,7 +77,11 @@ extension ComicCell: RealmCell {
               // update the cell's image with the data
               weakSelf?.iconImageView.image = UIImage(data: data)
               // store data in Realm for next time
-              comic.thumbnail?.data = data as NSData
+              do {
+                try Realm().write {
+                  comic.thumbnail?.data = data as NSData
+                }
+              }
             } catch {
               print(error.localizedDescription)
             }

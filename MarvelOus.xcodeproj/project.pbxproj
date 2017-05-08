@@ -39,6 +39,7 @@
 		9C4F6CE11EBFC183004D5F23 /* CardAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */; };
 		9C4F6CE41EBFCD2F004D5F23 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE31EBFCD2F004D5F23 /* README.md */; };
 		9C4F6CE61EBFCD38004D5F23 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CE51EBFCD38004D5F23 /* LICENSE.md */; };
+		9C4F6CF71EC066F7004D5F23 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F6CF61EC066F7004D5F23 /* Banner.swift */; };
 		9CE39B491EBCDE1900A08E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */; };
 		9CE39B4E1EBCDE1900A08E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4C1EBCDE1900A08E94 /* Main.storyboard */; };
 		9CE39B501EBCDE1900A08E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		9C4F6CE01EBFC183004D5F23 /* CardAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardAnimation.swift; path = Controller/CardAnimation.swift; sourceTree = "<group>"; };
 		9C4F6CE31EBFCD2F004D5F23 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9C4F6CE51EBFCD38004D5F23 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		9C4F6CF61EC066F7004D5F23 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = View/Banner.swift; sourceTree = "<group>"; };
 		9CE39B451EBCDE1900A08E94 /* MarvelOus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelOus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE39B481EBCDE1900A08E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CE39B4D1EBCDE1900A08E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				9CE39B4F1EBCDE1900A08E94 /* Assets.xcassets */,
 				9CE39B511EBCDE1900A08E94 /* LaunchScreen.storyboard */,
 				9C4F6CC61EBF58C1004D5F23 /* ComicCell.xib */,
+				9C4F6CF61EC066F7004D5F23 /* Banner.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				9C4F6CA81EBF396E004D5F23 /* Character.swift in Sources */,
 				9C4F6CD31EBF82F7004D5F23 /* String+NSRange.swift in Sources */,
 				9C4F6CBF1EBF55AF004D5F23 /* RealmCell.swift in Sources */,
+				9C4F6CF71EC066F7004D5F23 /* Banner.swift in Sources */,
 				9C4F6CDB1EBFAEAF004D5F23 /* PopoverTable.swift in Sources */,
 				9C4F6CAF1EBF396E004D5F23 /* Thumbnail.swift in Sources */,
 			);
